@@ -15,7 +15,8 @@ def div(divisor, dividend):
                     # We're done!
                     return quotient
                 elif dividend_bit >= divisor_bit:
-                    continue
+                    # Not done yet!
+                    break
         # If dividend >= divisor -> add 1
         quotient += 1
 
@@ -74,4 +75,15 @@ def sub(dividend, divisor):
     return result
 
 if __name__ == '__main__':
-    print(div('10', '10000000'))
+    import json
+
+    with open('inputs.json') as json_data:
+        data = json.load(json_data)
+        sizes = data.keys()
+        #for size in sizes:
+        size = 'size_16'
+        divisors = data[size]['divisor']
+        dividends = data[size]['dividend']
+        for divisor in divisors:
+            for dividend in dividends:
+                print('{0} divided by {1} = {2}'.format(int(dividend,2), int(divisor,2), div(divisor, dividend)))
