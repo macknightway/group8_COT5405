@@ -13,7 +13,7 @@ def get_random_bits_of_size(n):
              and 0b is preceded in every binary block
     '''
     s = random.randrange(0, 2**n)  # b is not inclusive in rand(a,b)
-    return format(s, "#0"+str(n+2)+'b')
+    return format(s, "0"+str(n)+'b')
 
 
 def generate_inputs(num_of_inputs, list_of_size_of_inputs):
