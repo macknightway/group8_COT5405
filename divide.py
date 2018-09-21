@@ -249,6 +249,15 @@ if __name__ == '__main__':
     main_div(7)
     main_div(8)
 
+    #cProfile.run('main_div(1)')
+    #cProfile.run('main_div(2)')
+    #cProfile.run('main_div(3)')
+    #cProfile.run('main_div(4)')
+    #cProfile.run('main_div(5)')
+    #cProfile.run('main_div(6)')
+    #cProfile.run('main_div(7)')
+    #cProfile.run('main_div(8)')
+
 
     # Potential way of doing this on a Linux Machine
     # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
