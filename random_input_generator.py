@@ -13,7 +13,9 @@ def get_random_bits_of_size(n):
              and 0b is preceded in every binary block
     '''
     s = random.randrange(0, 2**n)  # b is not inclusive in rand(a,b)
-    return format(s, "#0"+str(n+2)+'b')
+    if s == 0:
+        s = 1
+    return format(s, "0"+str(n)+'b')
 
 
 def generate_inputs(num_of_inputs, list_of_size_of_inputs):
@@ -31,6 +33,7 @@ def generate_inputs(num_of_inputs, list_of_size_of_inputs):
         for i in range(0, num_of_inputs):
             divisor = get_random_bits_of_size(size_of_input)
             dividend = get_random_bits_of_size(size_of_input)
+
             dict[key]["divisor"].append(divisor)
             dict[key]["dividend"].append(dividend)
 
