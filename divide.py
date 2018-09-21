@@ -9,6 +9,10 @@ def div(divisor, dividend):
     divisor = align_msb(divisor)
     dividend = align_msb(dividend)
 
+    if not dividend or not divisor:
+        return 0
+
+
     while len(dividend) >= len(divisor):
         if len(dividend) == len(divisor):
             for i in range(len(dividend)):
@@ -131,7 +135,7 @@ def main_div():
         data = json.load(json_data)
         sizes = data.keys()
         # for size in sizes:
-        size = 'size_16'
+        size = 'size_4'
         divisors = data[size]['divisor']
         dividends = data[size]['dividend']
         divisor_neg = False
@@ -141,15 +145,15 @@ def main_div():
         start_time = time.time()
         for i, divisor in enumerate(divisors):
             dividend = dividends[i]
+            dividend_neg = divisor_neg = False
 
-            if divisor[2] == '1':
+            if divisor[0] == '1':
                 divisor_neg = True
                 printed_divisor = twos_complement(divisor)
             else:
                 printed_divisor = divisor
-
         # for dividend in dividends:
-            if dividend[2] == '1':
+            if dividend[0] == '1':
                 dividend_neg = True
                 printed_dividend = twos_complement(dividend)
             else:
@@ -164,7 +168,7 @@ def main_div():
                     false_flag = True
             elif divisor_neg and not dividend_neg:
                 x = div(divisor, dividend)
-                print('{0} divided by -{1} = -{2}'.format(int(printed_dividend, 2),
+                print('{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
                                                         int(printed_divisor, 2),
                                                         x))
                 y = int(int(dividend, 2) / int(divisor, 2))
@@ -172,7 +176,7 @@ def main_div():
                     false_flag = True
             elif not divisor_neg and dividend_neg:
                 x = div(divisor, dividend)
-                print('-{0} divided by {1} = -{2}'.format(int(printed_dividend, 2),
+                print('-{0} divided by {1} = {2}'.format(int(printed_dividend, 2),
                                                         int(printed_divisor, 2),
                                                         x))
                 y = int(int(dividend, 2) / int(divisor, 2))
@@ -196,7 +200,10 @@ def main_div():
 if __name__ == '__main__':
     import cProfile
 
+    #changed option argument from 1-8, 1 = 4 while 8 = 512
+
     cProfile.run('main_div()')
+
     # Potential way of doing this on a Linux Machine
     # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
     # main()
