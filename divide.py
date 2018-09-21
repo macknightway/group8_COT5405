@@ -139,50 +139,53 @@ def main_div():
         false_flag = False
         # Starting Timer
         start_time = time.time()
-        for divisor in divisors:
+        for i, divisor in enumerate(divisors):
+            dividend = dividends[i]
+
             if divisor[2] == '1':
                 divisor_neg = True
                 printed_divisor = twos_complement(divisor)
             else:
                 printed_divisor = divisor
-            for dividend in dividends:
-                if dividend[2] == '1':
-                    dividend_neg = True
-                    printed_dividend = twos_complement(dividend)
-                else:
-                    printed_dividend = dividend
-                if divisor_neg and dividend_neg:
-                    x = div(divisor, dividend)
-                    print('-{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
-                                                              int(printed_divisor, 2),
-                                                              x))
-                    y = int(int(dividend, 2) / int(divisor, 2))
-                    if not (x == y):
-                        false_flag = True
-                elif divisor_neg and not dividend_neg:
-                    x = div(divisor, dividend)
-                    print('{0} divided by -{1} = -{2}'.format(int(printed_dividend, 2),
-                                                              int(printed_divisor, 2),
-                                                              x))
-                    y = int(int(dividend, 2) / int(divisor, 2))
-                    if not (x == y):
-                        false_flag = True
-                elif not divisor_neg and dividend_neg:
-                    x = div(divisor, dividend)
-                    print('-{0} divided by {1} = -{2}'.format(int(printed_dividend, 2),
-                                                              int(printed_divisor, 2),
-                                                              x))
-                    y = int(int(dividend, 2) / int(divisor, 2))
-                    if not (x == y):
-                        false_flag = True
-                else:
-                    x = div(divisor, dividend)
-                    print('{0} divided by {1} = {2}'.format(int(printed_dividend, 2),
-                                                            int(printed_divisor, 2),
-                                                            x))
-                    y = int(int(dividend, 2) / int(divisor, 2))
-                    if not (x == y):
-                        false_flag = True
+
+        # for dividend in dividends:
+            if dividend[2] == '1':
+                dividend_neg = True
+                printed_dividend = twos_complement(dividend)
+            else:
+                printed_dividend = dividend
+            if divisor_neg and dividend_neg:
+                x = div(divisor, dividend)
+                print('-{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
+                                                        int(printed_divisor, 2),
+                                                        x))
+                y = int(int(dividend, 2) / int(divisor, 2))
+                if not (x == y):
+                    false_flag = True
+            elif divisor_neg and not dividend_neg:
+                x = div(divisor, dividend)
+                print('{0} divided by -{1} = -{2}'.format(int(printed_dividend, 2),
+                                                        int(printed_divisor, 2),
+                                                        x))
+                y = int(int(dividend, 2) / int(divisor, 2))
+                if not (x == y):
+                    false_flag = True
+            elif not divisor_neg and dividend_neg:
+                x = div(divisor, dividend)
+                print('-{0} divided by {1} = -{2}'.format(int(printed_dividend, 2),
+                                                        int(printed_divisor, 2),
+                                                        x))
+                y = int(int(dividend, 2) / int(divisor, 2))
+                if not (x == y):
+                    false_flag = True
+            else:
+                x = div(divisor, dividend)
+                print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
+                                                        int(printed_divisor,2),
+                                                        x))
+                y = int(int(dividend, 2) / int(divisor,2))
+                if not (x == y):
+                    false_flag = True
         if not false_flag:
             print('All TEST CASES PASSED')
     # End of Timer
