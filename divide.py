@@ -1,4 +1,3 @@
-
 def div(divisor, dividend):
     #Set the Quotient to 0
     quotient = 0
@@ -118,22 +117,27 @@ def twos_complement(bin_data):
             twos_complement += '0'
     return add_one(twos_complement)
 
+from memory_profiler import profile
 
-if __name__ == '__main__':
+@profile
+def main():
     import json
+    import time
 
     with open('inputs.json') as json_data:
-        #x = div('0' + bin(2829)[2:], '0' + bin(23833)[2:])
-        #y = 84861 / 92185
+        # x = div('0' + bin(2829)[2:], '0' + bin(23833)[2:])
+        # y = 84861 / 92185
         data = json.load(json_data)
         sizes = data.keys()
-        #for size in sizes:
+        # for size in sizes:
         size = 'size_16'
         divisors = data[size]['divisor']
         dividends = data[size]['dividend']
         divisor_neg = False
         dividend_neg = False
         false_flag = False
+        # Starting Timer
+        start_time = time.time()
         for divisor in divisors:
             if divisor[2] == '1':
                 divisor_neg = True
@@ -149,34 +153,44 @@ if __name__ == '__main__':
                 if divisor_neg and dividend_neg:
                     x = div(divisor, dividend)
                     print('-{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
-                                                            int(printed_divisor, 2),
-                                                            x))
+                                                              int(printed_divisor, 2),
+                                                              x))
                     y = int(int(dividend, 2) / int(divisor, 2))
                     if not (x == y):
                         false_flag = True
                 elif divisor_neg and not dividend_neg:
                     x = div(divisor, dividend)
                     print('{0} divided by -{1} = -{2}'.format(int(printed_dividend, 2),
-                                                            int(printed_divisor, 2),
-                                                            x))
+                                                              int(printed_divisor, 2),
+                                                              x))
                     y = int(int(dividend, 2) / int(divisor, 2))
                     if not (x == y):
                         false_flag = True
                 elif not divisor_neg and dividend_neg:
                     x = div(divisor, dividend)
                     print('-{0} divided by {1} = -{2}'.format(int(printed_dividend, 2),
-                                                            int(printed_divisor, 2),
-                                                            x))
+                                                              int(printed_divisor, 2),
+                                                              x))
                     y = int(int(dividend, 2) / int(divisor, 2))
                     if not (x == y):
                         false_flag = True
                 else:
                     x = div(divisor, dividend)
-                    print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
-                                                            int(printed_divisor,2),
+                    print('{0} divided by {1} = {2}'.format(int(printed_dividend, 2),
+                                                            int(printed_divisor, 2),
                                                             x))
-                    y = int(int(dividend,2) / int(divisor,2))
+                    y = int(int(dividend, 2) / int(divisor, 2))
                     if not (x == y):
                         false_flag = True
         if not false_flag:
             print('All TEST CASES PASSED')
+    # End of Timer
+    elapsed_time = time.time() - start_time
+    print('Time Elapsed: {0}'.format(elapsed_time))
+
+    # Potential way of doing this on a Linux Machine
+    # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
+
+
+if __name__ == '__main__':
+    main()
