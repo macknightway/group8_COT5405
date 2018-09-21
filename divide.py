@@ -20,7 +20,10 @@ def div(divisor, dividend):
                 divisor_bit = divisor[i]
                 if dividend_bit < divisor_bit:
                     # We're done!
-                    return quotient
+                    if is_negative:
+                        return -1 * quotient
+                    else:
+                        return quotient
                 elif dividend_bit == divisor_bit:
                     # Not done yet!
                     continue
@@ -108,7 +111,7 @@ def add_one(bin_data):
                 if (abs(i) == length):
                     result = '1' + result
                 else:
-                    result = bin_data[:-i] + '1' + result
+                    result = bin_data[:i] + '1' + result
             break
     return result
 
@@ -177,38 +180,55 @@ def main_div(option):
                 printed_dividend = dividend
             if divisor_neg and dividend_neg:
                 x = div(divisor, dividend)
-                #print('-{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
-                #                                        int(printed_divisor, 2),
-                #                                        x))
-                y = int(int(dividend, 2) / int(divisor, 2))
+                '''
+                print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
+                                                        int(printed_divisor,2),
+                                                        x))
+
+                y = int(int(printed_dividend, 2) / int(printed_divisor,2))
                 if not (x == y):
                     false_flag = True
+                '''
             elif divisor_neg and not dividend_neg:
                 x = div(divisor, dividend)
-                #print('{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
-                #                                        int(printed_divisor, 2),
-                #                                        x))
-                y = int(int(dividend, 2) / int(divisor, 2))
+
+                '''
+                print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
+                                                        int(printed_divisor,2),
+                                                        x))
+
+                y = int(int(printed_dividend, 2) / int(printed_divisor,2))
                 if not (x == y):
                     false_flag = True
+                '''
+
             elif not divisor_neg and dividend_neg:
                 x = div(divisor, dividend)
-                #print('-{0} divided by {1} = {2}'.format(int(printed_dividend, 2),
-                #                                        int(printed_divisor, 2),
-                #                                        x))
-                y = int(int(dividend, 2) / int(divisor, 2))
+
+                '''
+                print('-{0} divided by {1} = {2}'.format(int(printed_dividend,2),
+                                                        int(printed_divisor,2),
+                                                        x))
+
+                y = int(int(printed_dividend, 2) / int(printed_divisor,2))
                 if not (x == y):
                     false_flag = True
+                '''
+
             else:
                 x = div(divisor, dividend)
-                #print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
-                #                                        int(printed_divisor,2),
-                #                                        x))
-                y = int(int(dividend, 2) / int(divisor,2))
+                '''
+                print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
+                                                        int(printed_divisor,2),
+                                                        x))
+                                                      
+                y = int(int(printed_dividend, 2) / int(printed_divisor,2))
                 if not (x == y):
                     false_flag = True
-        if not false_flag:
-            print('All TEST CASES PASSED')
+                '''
+
+        #if not false_flag:
+        #    print('All TEST CASES PASSED')
     # End of Timer
     elapsed_time = time.time() - start_time
     print('Time Elapsed: {0}'.format(elapsed_time))
@@ -220,14 +240,14 @@ if __name__ == '__main__':
     #changed option argument from 1-8, 1 = 4 while 8 = 512
 
     #cProfile.run('main_div()')
-    #main_div(1)
-    #main_div(2)
-    #main_div(3)
+    main_div(1)
+    main_div(2)
+    main_div(3)
     main_div(4)
-    #main_div(5)
-    #main_div(6)
-    #main_div(7)
-    #main_div(8)
+    main_div(5)
+    main_div(6)
+    main_div(7)
+    main_div(8)
 
 
     # Potential way of doing this on a Linux Machine
