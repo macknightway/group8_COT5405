@@ -125,7 +125,7 @@ def twos_complement(bin_data):
 #from memory_profiler import profile
 
 #@profile
-def main_div():
+def main_div(option):
     import json
     import time
 
@@ -135,7 +135,24 @@ def main_div():
         data = json.load(json_data)
         sizes = data.keys()
         # for size in sizes:
-        size = 'size_4'
+        #size = 'size_4'
+        # for size in sizes:
+        if option == 1:
+            size = 'size_4'
+        elif option == 2:
+            size = 'size_8'
+        elif option == 3:
+            size = 'size_16'
+        elif option == 4:
+            size = 'size_32'
+        elif option == 5:
+            size = 'size_64'
+        elif option == 6:
+            size = 'size_128'
+        elif option == 7:
+            size = 'size_256'
+        elif option == 8:
+            size = 'size_512'
         divisors = data[size]['divisor']
         dividends = data[size]['dividend']
         divisor_neg = False
@@ -160,33 +177,33 @@ def main_div():
                 printed_dividend = dividend
             if divisor_neg and dividend_neg:
                 x = div(divisor, dividend)
-                print('-{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
-                                                        int(printed_divisor, 2),
-                                                        x))
+                #print('-{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
+                #                                        int(printed_divisor, 2),
+                #                                        x))
                 y = int(int(dividend, 2) / int(divisor, 2))
                 if not (x == y):
                     false_flag = True
             elif divisor_neg and not dividend_neg:
                 x = div(divisor, dividend)
-                print('{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
-                                                        int(printed_divisor, 2),
-                                                        x))
+                #print('{0} divided by -{1} = {2}'.format(int(printed_dividend, 2),
+                #                                        int(printed_divisor, 2),
+                #                                        x))
                 y = int(int(dividend, 2) / int(divisor, 2))
                 if not (x == y):
                     false_flag = True
             elif not divisor_neg and dividend_neg:
                 x = div(divisor, dividend)
-                print('-{0} divided by {1} = {2}'.format(int(printed_dividend, 2),
-                                                        int(printed_divisor, 2),
-                                                        x))
+                #print('-{0} divided by {1} = {2}'.format(int(printed_dividend, 2),
+                #                                        int(printed_divisor, 2),
+                #                                        x))
                 y = int(int(dividend, 2) / int(divisor, 2))
                 if not (x == y):
                     false_flag = True
             else:
                 x = div(divisor, dividend)
-                print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
-                                                        int(printed_divisor,2),
-                                                        x))
+                #print('{0} divided by {1} = {2}'.format(int(printed_dividend,2),
+                #                                        int(printed_divisor,2),
+                #                                        x))
                 y = int(int(dividend, 2) / int(divisor,2))
                 if not (x == y):
                     false_flag = True
@@ -202,7 +219,16 @@ if __name__ == '__main__':
 
     #changed option argument from 1-8, 1 = 4 while 8 = 512
 
-    cProfile.run('main_div()')
+    #cProfile.run('main_div()')
+    #main_div(1)
+    #main_div(2)
+    #main_div(3)
+    main_div(4)
+    #main_div(5)
+    #main_div(6)
+    #main_div(7)
+    #main_div(8)
+
 
     # Potential way of doing this on a Linux Machine
     # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
