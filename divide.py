@@ -66,6 +66,7 @@ def sub(dividend, divisor):
     # Dividend: 1011 -> 11
     # Divisor:   100 -> 4
     # Answer: 111 -> 7
+
     result = ''
     length = len(dividend)
     for i in range(length - len(divisor)):
@@ -117,10 +118,10 @@ def twos_complement(bin_data):
             twos_complement += '0'
     return add_one(twos_complement)
 
-from memory_profiler import profile
+#from memory_profiler import profile
 
-@profile
-def main():
+#@profile
+def main_div():
     import json
     import time
 
@@ -188,9 +189,13 @@ def main():
     elapsed_time = time.time() - start_time
     print('Time Elapsed: {0}'.format(elapsed_time))
 
-    # Potential way of doing this on a Linux Machine
-    # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
-
 
 if __name__ == '__main__':
-    main()
+    import cProfile
+
+    cProfile.run('main_div()')
+    # Potential way of doing this on a Linux Machine
+    # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
+    # main()
+
+
