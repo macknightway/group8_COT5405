@@ -43,10 +43,13 @@ def write_to_file(content):
     with open(FILE_NAME, 'w') as f:
         f.write(content)
 
-
-if __name__=="__main__":
+def create_json_file():
     num_of_inputs = 1000
     list_of_size_of_inputs = [4, 8, 16, 32, 64, 128, 256, 512]
 
     dict_of_inputs = generate_inputs(num_of_inputs, list_of_size_of_inputs)
     write_to_file(json.dumps(dict_of_inputs, indent=4))
+
+
+if __name__=="__main__":
+    create_json_file()

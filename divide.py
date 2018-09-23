@@ -133,12 +133,11 @@ def main_div(option):
     import time
 
     with open('inputs.json') as json_data:
+        total_runs = 0
         # x = div('0' + bin(2829)[2:], '0' + bin(23833)[2:])
         # y = 84861 / 92185
         data = json.load(json_data)
         sizes = data.keys()
-        # for size in sizes:
-        #size = 'size_4'
         # for size in sizes:
         if option == 1:
             size = 'size_4'
@@ -226,12 +225,15 @@ def main_div(option):
                 if not (x == y):
                     false_flag = True
                 '''
+            total_runs += abs(x)
 
         #if not false_flag:
         #    print('All TEST CASES PASSED')
     # End of Timer
     elapsed_time = time.time() - start_time
-    print('Time Elapsed: {0}'.format(elapsed_time))
+    #print('{0}'.format(total_runs))
+    #print('{0}'.format(elapsed_time))
+    return elapsed_time
 
 
 if __name__ == '__main__':
@@ -262,5 +264,4 @@ if __name__ == '__main__':
     # Potential way of doing this on a Linux Machine
     # print(resources.getrusage(resources.RUSAGE_SELF).ru_maxrss)
     # main()
-
 
