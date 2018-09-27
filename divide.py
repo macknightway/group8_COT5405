@@ -233,7 +233,7 @@ def main_div(option):
     elapsed_time = time.time() - start_time
     #print('{0}'.format(total_runs))
     #print('{0}'.format(elapsed_time))
-    return elapsed_time
+    return elapsed_time, total_runs
 
 
 if __name__ == '__main__':
