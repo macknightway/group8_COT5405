@@ -38,7 +38,7 @@ def time_to_test(number_of_test_cases):
     initialize_spreadsheet(sheet)
     for i in range(number_of_test_cases):
         # we ignore the 0 column since that was initialized
-        column = (2 * i) + 2
+        column = i + 1
         row = 0
         sheet.write(row, column, "Time Trial " + str(i + 1))
         sheet.write(row + 9, column, "Total Quotient " + str(i + 1))
@@ -85,4 +85,4 @@ def time_to_test(number_of_test_cases):
 
 if __name__ == '__main__':
     # Enter the number of test cases you want to run
-    time_to_test(4)
+    time_to_test(200)
