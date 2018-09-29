@@ -24,11 +24,12 @@ Running divide won't show any input but will compile and complete while the test
 
 $ python3.6 test.py
 
-To run a divide with fresh inputs
+To run a divide with fresh inputs...
+Note : This will only run each 1000 input from 4bits - 512bits once!
 $ python 3.6 random_input_generator.py
 $ python3.6 divide.py
 
-If you want to see how much memory is taken up then use the next command shown, but be warned that it will take significantly longer than normal so be patient!
+If you want to see how much memory is taken up then use the next command shown, but be warned that it will take significantly longer than normal so be patient! Also to enable feature uncomment the @profile by taking away the hashtag before in on around line 130.
 $ python3.6 -m memory_profiler divide.py
 
 
