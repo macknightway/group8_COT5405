@@ -1,5 +1,6 @@
 # group8_COT5405
 Algorithms and Analysis Group Projects
+Compiled and ran on a Linux Ubuntu Machine
 
 Cloning Section
 
