@@ -27,6 +27,10 @@ $ python3.6 -m pip install -U memory_profiler
 
 $ python3.6 -m pip install xlwt
 
+$ cd group8_COT5405
+
+$ git checkout develop
+
 Running Section
 
 Now you can choose to run either the divide function or the test.py
